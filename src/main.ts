@@ -133,6 +133,12 @@ async function startGame() {
     console.warn('Failed to fetch word, using fallback.');
   }
 
+  // Add backdoor command
+  (window as any).showWordleAnswer = () => {
+    console.log('[BACKDOOR] The Wordle answer is:', WORD);
+    return WORD;
+  };
+
   // Create grid
   for (let i = 0; i < 6; i++) {
     const row = document.createElement('div');
